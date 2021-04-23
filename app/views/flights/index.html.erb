@@ -1,14 +1,17 @@
 <h2>Airlines and Flights</h2>
 <% @flights.each do |flight| %>
-<div id="flight-<%= flight.id %>">
-  <p>Flight Number: <%= flight.number %></p>
-  <ul>
-    <% flight.passengers.each do |passenger| %>
-    <li><%= passenger.name %></li>
-    <li><%= passenger.id %></li>
-    <%= button_to "Remove Passenger", "flights/#{flight.id}/passengers/#{passenger.id}", method: :delete %><br>
-    <% end %>
-  </ul>
-  <p>Airline <%= flight.airline.name %> </p>
-</div>
+  <div id="flight-<%= flight.id %>">
+    <p>Flight Number: <%= flight.number %></p>
+    <ul>
+        <ul>
+        <% flight.passengers.each do |passenger| %>
+          <li id="passenger-<%= passenger.id %>">
+            <%= passenger.name %> <%= button_to "Remove Passenger", "flights/#{flight.id}/passengers/#{passenger.id}", method: :delete %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </ul>
+    <p>Airline <%= flight.airline.name %> </p>
+  </div>
 <% end %>
