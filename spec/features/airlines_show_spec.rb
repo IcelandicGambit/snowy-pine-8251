@@ -34,10 +34,11 @@ RSpec.describe "Flights Show Page" do
   it "shows that list has no duplicate names of passengers" do
     visit "/airline/#{@airline.id}"
 
-    expect(page).to have_content(passenger4.name)
+    expect(page).to have_content(passenger4.name, count: 1)
   end
 
   it "only shows passengers that are 18 or older" do
     visit "/airline/#{@airline.id}"
+
   end
 end
