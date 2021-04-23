@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Flights Show Page" do
+RSpec.describe "Airlines Show Page" do
   before :each do
     @airline = Airline.create!(name: "Larsh Airlines")
     @airline2 = Airline.create!(name: "Plamb Airlines")
@@ -22,23 +22,23 @@ RSpec.describe "Flights Show Page" do
   end
 
   it "lists passengers that have flights on that airline" do
-    visit "/airline/#{@airline.id}"
+    visit "/airlines/#{@airline.id}"
 
-    expect(page).to have_content(passenger1.name)
-    expect(page).to have_content(passenger2.name)
-    expect(page).to have_content(passenger3.name)
-    expect(page).to have_content(passenger4.name)
-    expect(page).to have_content(passenger5.name)
+    expect(page).to have_content(@passenger1.name)
+    expect(page).to have_content(@passenger2.name)
+    expect(page).to have_content(@passenger3.name)
+    expect(page).to have_content(@passenger4.name)
   end
 
   it "shows that list has no duplicate names of passengers" do
-    visit "/airline/#{@airline.id}"
-
-    expect(page).to have_content(passenger4.name, count: 1)
+    visit "/airlines/#{@airline.id}"
+    # require pry; binding.pry
+    expect(page).to have_content(@passenger4.name, count: 1)
   end
 
   it "only shows passengers that are 18 or older" do
-    visit "/airline/#{@airline.id}"
+    visit "/airlines/#{@airline.id}"
 
+    expect(page).not_to have_content(@passenger5.name)
   end
 end

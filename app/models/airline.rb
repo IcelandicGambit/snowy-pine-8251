@@ -1,9 +1,10 @@
 class Airline < ApplicationRecord
   has_many :flights
   
-  def adults
-    passengers.
-    distinct.
-    where('age >= ?', 18)
+  def self.adults(airline)
+    Passenger.joins(flights: :airline)
+    .where('passengers.age >= ?', 18)
+    .where("airlines.id = ?", airline.id)
+    .distinct
   end
 end

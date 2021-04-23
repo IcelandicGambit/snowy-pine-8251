@@ -39,8 +39,8 @@ RSpec.describe "Flights Index Page" do
   it "delete button removes passenger" do
   visit "/flights"
 
-    within("#passenger-#{@passenger_.id}") do
-      expect(page).to have_content(@passenger_1.name)
+    within("#passenger-#{@passenger1.id}") do
+      expect(page).to have_content(@passenger1.name)
       click_button('Remove Passenger')
     end
   end
