@@ -35,4 +35,23 @@ RSpec.describe "Flights Index Page" do
     expect(page).to have_content(@passenger4.name)
     expect(page).to have_content(@passenger5.name)
   end
+
+  it "I Can Remove a Passenger from a Flight" do
+  visit "/flights"
+
+    within "#passenger-#{@passenger1.id}" do
+      expect(page).to have_button("Remove Passenger")
+    end
+
+    within "#passenger-#{@passenger2.id}" do
+      expect(page).to have_button("Remove Passenger")
+    end
+
+    within "#flight-#{@flight_1.id}" do
+      within "#passenger-#{@passenger4.id}" do
+        expect(page).to have_button("Remove Passenger")
+        click_button "Remove Passenger"
+      end
+    end
+  end
 end 
