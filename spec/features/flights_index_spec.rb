@@ -25,13 +25,13 @@ RSpec.describe "Flights Index Page" do
 
 
     expect(page).to have_content(@airline.name)
-    expect(page).to have_content(@flight1.number)
+    expect(page).to have_content(@flight_1.number)
     expect(page).to have_content(@passenger1.name)
     expect(page).to have_content(@passenger2.name)
     expect(page).to have_content(@passenger3.name)
     expect(page).to have_content(@passenger4.name)
   
-    expect(page).to have_content(@flight2.number)
+    expect(page).to have_content(@flight_2.number)
     expect(page).to have_content(@passenger4.name)
     expect(page).to have_content(@passenger5.name)
   end
